@@ -1,0 +1,30 @@
+spring:
+  # 数据源配置
+  datasource:
+    # 主数据源配置
+    primary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/test_hz?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+
+    # 从数据源配置
+    secondary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/test_hz_city?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+
+  jpa:
+    # 指定数据库和方言
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    # 展示SQL
+    show-sql: true
+    properties:
+      format_sql: true
+    # 开启懒加载
+    open-in-view: true
+    # 自动更新表结构
+    # hibernate:
+      # ddl-auto: update

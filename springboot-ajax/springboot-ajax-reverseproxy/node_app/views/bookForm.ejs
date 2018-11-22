@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script src="/javascripts/jquery-3.1.0.min.js"></script>
+    <script src="/javascripts/vue-2.5.16.min.js"></script>
+    <script src="/javascripts/vue-resource-1.5.1.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/stylesheets/default.css" rel="stylesheet"/>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>书籍管理</title>
+
+    <script>
+        function showError (resp) {
+            console.log(resp);
+        }
+
+        var bookId = '<%= bookId %>';
+
+        $(function () {
+            var appForm = new Vue({
+                el: '#app-form',
+                data: {
+                    title: 'Spring Boot 2.x CrossOrigin',
+                    book: {}
+                },
+                created: function () { // 初始化时调用
+                    this.init();
+                },
+                methods: {
+                    init: function () { // 获取列表
+                        var that = this;
+
+                        if(bookId != null && bookId != ''){
+                            that.$resource('/boot/api/book/' + bookId).get().then(function (resp) {
+                                resp.json().then(function (result) {
+                                    if (result.RESCODE == "000000") {
+                                        that.book = result.RESMSG;
+                                    } else {
+                                        console.log(result.RESMSG);
+                                    }
+                                });
+                            }, showError);
+                        }
+                    },
+                    submit: function () {
+                        if(bookId != null && bookId != '') {
+                            this.update(this.$data.book);
+                        } else {
+                            this.create(this.$data.book);
+                        }
+                    },
+                    create: function (book) {
+                        var that = this;
+                        that.$resource('/boot/api/book/create').get(book).then(function (resp) {
+                            resp.json().then(function (result) {
+                                if(result.RESCODE == "000000") {
+                                    location = '/';
+                                } else {
+                                    console.log(result.RESMSG);
+                                }
+                            });
+                        }, showError);
+                    },
+                    update: function (book) {
+                        var that = this;
+                        that.$resource('/boot/api/book/update').get(book).then(function (resp) {
+                            resp.json().then(function (result) {
+                                if (result.RESCODE == "000000") {
+                                    location = '/';
+                                } else {
+                                    console.log(result.RESMSG);
+                                }
+                            });
+                        }, showError);
+                    }
+                }
+            });
+            window.appForm = appForm;
+        });
+
+    </script>
+</head>
+
+<body>
+<div class="contentDiv">
+
+    <div id="app-form">
+        <h5>{{ title }}</h5>
+
+        <legend>
+            <strong>书籍管理</strong>
+        </legend>
+
+        <!-- 用.prevent表示阻止事件冒泡，这样，浏览器不再处理<form>的submit事件 -->
+        <form action="#0" v-on:submit.prevent="submit" class="form-horizontal">
+
+            <input type="hidden" name="id" v-model="book.id"/>
+
+            <div class="form-group">
+                <label for="book_name" class="col-sm-2 control-label">书名:</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="book_name" v-model="book.name"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="book_author" class="col-sm-2 control-label">作者:</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="book_author" v-model="book.author"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="book_introduction" class="col-sm-2 control-label">简介:</label>
+                <div class="col-xs-4">
+                    <textarea class="form-control" id="book_introduction" rows="3" v-model="book.introduction"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class="btn btn-primary" type="submit" value="提交"/>&nbsp;&nbsp;
+                    <input class="btn" type="button" value="返回" onclick="history.back()"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

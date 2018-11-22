@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30" status="WARN">
+    <Properties>
+        <Property name="LOG_NAME" value="server" />
+        <Property name="APP_ID" value="springboot-log4j2" />
+        <Property name="LOG_PATH" value="/var/logs/${APP_ID}/" />
+        <Property name="LOG_PATTERN" value="[%level{length=5}] %date [%X{ThreadName}] [%logger:%line] >>> %msg%n" />
+        <Property name="ROOT_LOG_LEVEL" value="INFO" />
+        <Property name="CONSOLE_LEVEL" value="INFO" />
+        <Property name="FRAMEWORK_LEVEL" value="INFO" />
+    </Properties>
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <ThresholdFilter level="${CONSOLE_LEVEL}" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+        <RollingFile name="FILE" fileName="${LOG_PATH}/${LOG_NAME}.log" filePattern="${LOG_PATH}/${LOG_NAME}.log-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="1000 MB" />
+            </Policies>
+            <DefaultRolloverStrategy min="1" max="100" />
+        </RollingFile>
+        <RollingFile name="ERROR" fileName="${LOG_PATH}/error.log" filePattern="${LOG_PATH}/error-%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+        <!--<HTTP_OPPO name="MONITOR" url="http://183.131.22.114/api/logSetting" collector="183.131.22.114:8089" appId="${APP_ID}" />-->
+    </Appenders>
+
+    <Loggers>
+        <logger name="org.springframework" level="${FRAMEWORK_LEVEL}" additivity="true" />
+        <logger name="org.mybatis" level="${FRAMEWORK_LEVEL}" additivity="true" />
+        <logger name="org.apache" level="${FRAMEWORK_LEVEL}" additivity="true" />
+        <logger name="com.alibaba" level="${FRAMEWORK_LEVEL}" additivity="true" />
+        <AsyncRoot level="${ROOT_LOG_LEVEL}" includeLocation="true">
+            <AppenderRef ref="FILE" />
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="ERROR" />
+            <AppenderRef ref="MONITOR" />
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

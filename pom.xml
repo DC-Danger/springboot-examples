@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hz.learnboot</groupId>
+    <artifactId>springboot-examples</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>springboot-examples</name>
+    <description>Spring Boot 实践学习案例</description>
+
+    <url>https://gitee.com/hezhao/springboot-examples</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Horace</name>
+            <email>hezhao_java@163.com</email>
+            <url>https://gitee.com/hezhao</url>
+        </developer>
+    </developers>
+
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <org.springframework.boot.version>2.0.3.RELEASE</org.springframework.boot.version>
+    </properties>
+
+    <!-- 模块列表 -->
+    <modules>
+		<!-- Spring Boot 基础知识 -->
+        <module>springboot-basic</module>
+
+		<!-- Spring Boot 数据库操作 -->
+        <module>springboot-data</module>
+
+		<!-- Spring Boot 缓存 -->
+        <module>springboot-caches</module>
+
+		<!-- Spring Boot 模板 -->
+        <module>springboot-templates</module>
+
+		<!-- Spring Boot 文档生成工具 -->
+        <module>springboot-docs</module>
+
+		<!-- Spring Boot 业务应用 -->
+        <module>springboot-bussiness</module>
+
+		<!-- Spring Boot AJAX 跨域 -->
+        <module>springboot-ajax</module>
+	
+        <!-- Spring Boot 使用 Websocket -->
+        <module>springboot-websockets</module>
+
+        <!-- Spring Boot 集成 WebFlux 开发反应式 Web 应用 -->
+        <module>springboot-webflux</module>
+
+        <!-- Spring Boot 集成 Dubbo -->
+        <module>springboot-dubbo</module>
+
+        <!-- Spring Boot 整合 搜索引擎 -->
+        <module>springboot-search</module>
+		
+        <!-- Spring Boot 整合 消息队列 -->
+        <module>springboot-mq</module>
+
+        <!-- Spring Boot 权限认证 -->
+        <module>springboot-auth</module>
+
+        <!-- Spring Cloud 入门 -->
+        <module>springboot-cloud</module>
+
+    </modules>
+
+</project>

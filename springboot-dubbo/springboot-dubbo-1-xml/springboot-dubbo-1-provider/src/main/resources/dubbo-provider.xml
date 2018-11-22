@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo  http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="dubbo-1-provider" logger="slf4j"/>
+
+    <!-- 注册中心支持zookeeper、redis、Muticast、Simple注册中心 -->
+    <!-- 推荐使用zookeeper作为注册中心 多个address间用,分隔 -->
+    <dubbo:registry address="${dubbo.registry.address}" default="true" protocol="zookeeper" client="zkclient"/>
+
+    <!-- 协议类型和暴露服务的端口, 这里用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" threadpool="fixed" threads="${dubbo.protocol.pool.size}"/>
+
+    <!-- Dubbo Filter， 需要在 META-INF/dubbo/com.alibaba.dubbo.rpc.Filter 文件中配置相关信息 -->
+    <!-- 设置超时时间 服务提供方更加清楚每个服务的耗时 这边进行设置是更加合理的 -->
+    <dubbo:provider filter="dubboServiceLogFilter" timeout="5000" retries="0" delay="-1" actives="150" executes="150"/>
+
+    <!-- 声明需要暴露的服务接口 -->
+    <!-- delay=-1延迟到spring容器启动完成再暴露服务 强烈不建议使用applicationContext显式获取bean,应该像本例一样使用ioc依赖注入获取bean -->
+    <dubbo:service interface="com.hz.learnboot.dubbo.service.DemoService" ref="demoServiceImpl" timeout="2000" retries="0" delay="-1" executes="150" actives="150" />
+
+</beans>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hz.learnboot</groupId>
+    <artifactId>springboot-ajax</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>springboot-ajax</name>
+    <description>Spring Boot AJAX 跨域</description>
+
+    <url>https://gitee.com/hezhao/springboot-examples/tree/master/springboot-ajax</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Horace</name>
+            <email>hezhao_java@163.com</email>
+            <url>https://gitee.com/hezhao</url>
+        </developer>
+    </developers>
+
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- 模块列表 -->
+    <modules>
+        <!-- Spring Boot AJAX 通过 JSONP 跨域 -->
+        <module>springboot-ajax-jsonp</module>
+        <!-- Spring Boot AJAX 通过 CrossOrigin 跨域 -->
+        <module>springboot-ajax-crossorigin</module>
+        <!-- Spring Boot AJAX 通过 反向代理 跨域 -->
+        <module>springboot-ajax-reverseproxy</module>
+    </modules>
+
+</project>

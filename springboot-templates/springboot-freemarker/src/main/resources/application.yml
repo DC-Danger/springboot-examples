@@ -1,0 +1,29 @@
+# FREEMARKER (FreeMarkerAutoConfiguration)
+spring:
+    freemarker:
+      enabled: true
+      cache: false
+      # spring boot 默认的页面模板存放目录
+      template-loader-path: classpath:/templates/
+      # 这是重点， 会过滤.ftl后缀的文件
+      suffix: .ftl
+      charset: UTF-8
+      content-type: text/html
+      check-template-location: true
+      expose-request-attributes: false
+      expose-session-attributes: false
+      request-context-attribute: request
+      expose-spring-macro-helpers: true
+      allow-request-override: false
+      allow-session-override: false
+      prefer-file-system-access: true
+      settings.template_update_delay: 0
+      settings.default_encoding: UTF-8
+      settings.classic_compatible: true
+
+    resources:
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths: /**

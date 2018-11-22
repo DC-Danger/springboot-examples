@@ -1,0 +1,1 @@
+# 没有配置，Spring Boot 默认使用 ConcurrentMapCacheManager 作为缓存技术。

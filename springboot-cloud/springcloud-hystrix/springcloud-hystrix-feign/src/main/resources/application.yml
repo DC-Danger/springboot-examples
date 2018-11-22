@@ -1,0 +1,16 @@
+server:
+  port: 8768
+
+spring:
+  application:
+    name: consumer-feign-hystrix
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ # 注册中心访问地址
+
+# Feign自带断路器,默认关闭，需要手动开启
+feign:
+  hystrix:
+    enabled: true

@@ -1,0 +1,15 @@
+#============== kafka ===================
+spring:
+  kafka:
+    # 指定kafka 代理地址，多个逗号分隔
+    bootstrap-servers: 127.0.0.1:9092
+    #=============== consumer  =======================
+    consumer:
+      # 指定默认消费者group id
+      group-id: test-consumer-group
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100ms
+      # 指定消息key和消息体的编解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

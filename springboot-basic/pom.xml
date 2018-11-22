@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hz.learnboot</groupId>
+    <artifactId>springboot-basic</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>springboot-basic</name>
+    <description>Spring Boot 基础知识</description>
+
+    <url>https://gitee.com/hezhao/springboot-examples/tree/master/springboot-basic</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Horace</name>
+            <email>hezhao_java@163.com</email>
+            <url>https://gitee.com/hezhao</url>
+        </developer>
+    </developers>
+
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- 模块列表 -->
+    <modules>
+        <!-- Spring Boot 起步 -->
+        <module>springboot-start</module>
+        <!-- Spring Boot 配置 -->
+        <module>springboot-config</module>
+
+        <!-- Spring Boot AOP 面向切面编程 -->
+        <module>springboot-aop</module>
+        <!-- Spring Boot AOP 自定义注解实现控制器访问次数限制 -->
+        <module>springboot-aop-accesslimit</module>
+        <!-- Spring Boot 自定义图标 -->
+        <module>springboot-banner</module>
+        <!-- Spring Boot 全局异常处理 -->
+        <module>springboot-exception</module>
+        <!-- Spring Boot 响应结果封装 -->
+        <module>springboot-response</module>
+        <!-- Spring Boot 配置 Filter、Servlet、Listener(监听)、interceptor(拦截器)、runner(服务启动执行)、PostConstruct -->
+        <module>springboot-filter</module>
+        <!-- Spring Boot 项目打包到外部Tomcat 示例 -->
+        <module>springboot-tomcat</module>
+        <!-- Spring Boot HTTPS配置 -->
+        <module>springboot-ssl</module>
+
+		<!-- Spring Boot Actuator 监控应用 -->
+        <module>springboot-actuator</module>
+        <!-- Spring Boot Admin Client -->
+        <module>springboot-admin-client</module>
+        <!-- Spring Boot Admin Server -->
+        <module>springboot-admin-server</module>
+
+        <!-- Spring Boot 集成Log4j2 -->
+        <module>springboot-log4j2</module>
+    </modules>
+
+</project>

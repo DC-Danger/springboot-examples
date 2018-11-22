@@ -1,0 +1,8 @@
+# 多数据源mongodb
+spring:
+  data:
+    mongodb:
+      primary:
+        uri: mongodb://localhost:27017/test
+      secondary:
+        uri: mongodb://localhost:27017/test2

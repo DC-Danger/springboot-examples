@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hz.learnboot</groupId>
+    <artifactId>springboot-mq</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>springboot-mq</name>
+    <description>Spring Boot 整合 消息队列</description>
+
+    <url>https://gitee.com/hezhao/springboot-examples/tree/master/springboot-mq</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Horace</name>
+            <email>hezhao_java@163.com</email>
+            <url>https://gitee.com/hezhao</url>
+        </developer>
+    </developers>
+
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- 模块列表 -->
+    <modules>
+        <!-- ActiveMQ 起步 -->
+        <module>activemq-start</module>
+        <!-- Spring Boot ActiveMQ 消费者 -->
+        <module>springboot-activemq-consumer</module>
+        <!-- Spring Boot ActiveMQ 生产者 -->
+        <module>springboot-activemq-producer</module>
+
+		<!-- Kafka 起步 -->
+        <module>kafka-start</module>
+        <!-- Spring Boot Kafka 消费者 -->
+        <module>springboot-kafka-consumer</module>
+        <!-- Spring Boot Kafka 生产者 -->
+        <module>springboot-kafka-producer</module>
+
+        <!-- RabbitMQ 起步 -->
+        <module>rabbitmq-start</module>
+        <!-- Spring Boot RabbitMQ 消费者 -->
+        <module>springboot-rabbitmq-consumer</module>
+        <!-- Spring Boot RabbitMQ 生产者 -->
+        <module>springboot-rabbitmq-producer</module>
+
+		<!-- RocketMQ 起步 -->
+        <module>rocketmq-start</module>
+        <!-- Spring Boot RocketMQ 消费者 -->
+        <module>springboot-rocketmq-consumer</module>
+        <!-- Spring Boot RocketMQ 生产者 -->
+        <module>springboot-rocketmq-producer</module>
+
+        <!-- 使用 Redis 用作消息队列 -->
+        <module>redismq-start</module>
+        <!-- Spring Boot 使用 Redis 作为 消息队列 示例 -->
+        <module>springboot-redismq</module>
+    </modules>
+
+</project>

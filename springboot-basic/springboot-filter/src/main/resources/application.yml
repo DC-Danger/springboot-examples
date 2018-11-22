@@ -1,0 +1,5 @@
+server:
+  # 设置端口号
+  port: 8082
+  # 编码格式
+  tomcat.uri-encoding: UTF-8

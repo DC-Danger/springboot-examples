@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: dubbo-2-provider
+
+server:
+  port: 8081
+
+logging:
+  level:
+    root: INFO
+    com.alibaba.dubbo: INFO
+
+# dubbo配置
+dubbo:
+  # 配置dubbo的包扫描，针对dubbo的@Service, @Reference注解
+  scan:
+    base-packages: com.hz.learnboot.dubbo.service.impl
+
+  application:
+    id: dubbo-2-provider
+    name: dubbo-2-provider
+    logger: slf4j
+
+  # 注册中心配置
+  registry:
+    id: my-registry
+    address: zookeeper://127.0.0.1:2181 # dubbo注册地址
+    default: true
+    protocol: zookeeper
+    client: zkclient
+
+  # 协议配置
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880 # 端口
+    threadpool: fixed # 线程池类型
+    threads: 200 # 线程池大小
+
+  # 提供方配置
+  provider:
+    filter: dubboServiceLogFilter
+    timeout: 5000
+    retries: 0
+    delay: -1
+    actives: 150
+    executes:  150
+
+# 服务的版本信息
+demo:
+  service:
+    version: 1.0.0
+
+
+# Enables Dubbo All Endpoints
+management:
+  endpoint:
+    dubbo:
+      enabled: true
+      dubbo-shutdown.enabled: true
+      dubbo-configs.enabled: true
+      dubbo-services.enabled: true
+      dubbo-references.enabled: true
+      dubbo-properties.enabled: true
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+        ## StatusChecker Name extras (default : empty )
+        extras: load,threadpool

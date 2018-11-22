@@ -1,0 +1,7 @@
+# SpringBoot会自动扫描ehcache.xml
+
+# 也可以手动指定ehcache配置文件路径
+#spring:
+#  cache:
+#    ehcache:
+#      config: classpath:ehcache.xml

@@ -1,0 +1,9 @@
+# 开发环境
+
+# 书信息
+demo:
+  book:
+    name: 《西游记》
+    author: 吴承恩
+    price: 28
+    isSell: true

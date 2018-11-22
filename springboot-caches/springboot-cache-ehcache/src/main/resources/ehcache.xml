@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd">
+
+    <!-- 缓存路径，ehcache分为内存和磁盘两级，此属性定义磁盘的缓存位置。-->
+    <diskStore path="java.io.tmpdir/Tmp_EhCache" />
+
+    <!-- 属性说明
+        name                            缓存名称
+		maxElementsInMemory             最大缓存数量
+        timeToIdleSeconds	            所缓存对象在此时间内没有访问，清除缓存 (单位/秒)。默认值是0，也就是可闲置时间无穷大。
+        timeToLiveSeconds               缓存时间超过这个值，清除缓存 (单位/秒)。默认是0，也就是对象存活时间无穷大。
+        eternal                         对象是否永久有效，一但设置了，timeout将不起作用。默认false
+        overflowToDisk                  是否保存到磁盘，当系统宕机时。默认true
+        maxElementsOnDisk               硬盘最大缓存个数。
+        memoryStoreEvictionPolicy       当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用，即一直以来最少被使用的）。
+        clearOnFlush                    内存数量最大时是否清除。
+        diskPersistent                  是否缓存虚拟机重启期数据。默认false
+        diskExpiryThreadIntervalSeconds 磁盘失效线程运行时间间隔，默认是120秒。
+	 -->
+
+    <!-- 默认缓存策略 -->
+    <defaultCache
+            maxElementsInMemory="1000"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="3600"
+            overflowToDisk="false"
+            eternal="false"
+            diskPersistent="false"
+            memoryStoreEvictionPolicy="LRU"
+    />
+
+    <!-- 自定义缓存1 -->
+    <cache name="ehcache1"
+           maxElementsInMemory="10"
+           timeToIdleSeconds="5"
+           timeToLiveSeconds="60"
+    />
+
+</ehcache>

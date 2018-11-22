@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot 国际化</title>
+</head>
+<body>
+
+<!-- 首先，项目会自动根据浏览器语言来加载不同的messages内容。 -->
+<!-- 然后，点击中文或者English也可以自由切换语言 -->
+
+<a href="/?lang=en_US">English(US)</a>
+<a href="/?lang=zh_CN">简体中文</a></br>
+
+<h3 th:text="#{hello} + ' , ' + ${world}"></h3>
+<br />
+
+</body>
+</html>

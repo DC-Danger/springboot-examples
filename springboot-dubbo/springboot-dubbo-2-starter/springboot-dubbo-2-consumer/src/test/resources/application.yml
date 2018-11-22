@@ -1,0 +1,75 @@
+spring:
+  application:
+    name: dubbo-2-consumer
+
+server:
+  port: 8082
+
+logging:
+  level:
+    root: INFO
+    com.alibaba.dubbo: INFO
+
+# dubbo配置
+dubbo:
+  application:
+    id: dubbo-2-consumer
+    name: dubbo-2-consumer
+    logger: slf4j
+
+  # 注册中心配置
+  registry:
+    id: my-registry
+    address: zookeeper://127.0.0.1:2181 # dubbo注册地址
+    default: true
+    protocol: zookeeper
+    client: zkclient
+
+  # 协议配置
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880 # 端口
+    threadpool: fixed # 线程池类型
+    threads: 200 # 线程池大小
+
+  # 消费方配置
+  consumer:
+    check: false
+    timeout: 5000
+    retries: 0
+    loadbalance: leastactive
+
+# 服务的版本信息
+demo:
+  service:
+    version: 1.0.0
+
+
+# Dubbo Endpoint (default status is disable)
+endpoints:
+  dubbo:
+    enabled:true
+# Enables Dubbo All Endpoints
+management:
+  server:
+      port: 8083
+  endpoint:
+    dubbo:
+      enabled: true
+      dubbo-shutdown.enabled: true
+      dubbo-configs.enabled: true
+      dubbo-services.enabled: true
+      dubbo-references.enabled: true
+      dubbo-properties.enabled: true
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+  # Exposes all web endpoints
+  endpoints:
+    web:
+      exposure:
+        include: "*"

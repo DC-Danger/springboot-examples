@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
+      # 带用户名密码
+      # uri: mongodb://admin:pass@localhost:27017/test
+      # 多个IP集群可以采用以下配置
+      # uri: mongodb://user:pwd@ip1:port1,ip2:port2/database

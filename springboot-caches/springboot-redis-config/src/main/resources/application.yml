@@ -1,0 +1,28 @@
+redis:
+  # ========== Redis 单机配置 ==========
+  standalone:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    timeout: 0
+
+  # ========== Redis 集群配置 ==========
+  pool:
+    # 连接池中的最大空闲连接
+    maxIdle: 8
+    # 连接池中的最小空闲连接
+    minIdle: 0
+    # 最大等待毫秒数,小于零表示阻塞不确定的时间,默认为-1
+    maxWait: 3000
+    # 最大连接数
+    maxTotal: 8
+    # 在获取连接的时是否检查有效性
+    testOnBorrow: false
+    # 是否在归还到池中前进行检验
+    testOnReturn: false
+  cluster:
+    # redis集群ip:port,ip2:port2
+    nodes: 127.0.0.1:6379
+    # 转发次数,一般等于节点数
+    max-redirects: 1

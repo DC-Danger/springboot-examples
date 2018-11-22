@@ -1,0 +1,25 @@
+server:
+  # 设置端口号
+  port: 8082
+  # 编码格式
+  tomcat.uri-encoding: UTF-8
+  servlet:
+      jsp:
+        init-parameters:
+          # 更改jsp或者js后立即刷新
+          development: true
+
+# 日志采用debug模式
+debug: true
+
+spring:
+    mvc:
+      # 静态资源访问
+      static-path-pattern: /static/**
+      # 使用jsp， 使用spring-boot:run启动， 不可以直接运行main方法启动
+      view:
+        suffix: .jsp
+        prefix: /WEB-INF/jsp/
+    thymeleaf:
+      enabled: false
+      cache: false

@@ -1,0 +1,13 @@
+spring:
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    # 注意 对象传输需开启包白名单 否则会报错， 可使用trust-all信任所有的包或使用trusted信任指定的包
+    packages:
+      trust-all: true
+
+  # 默认只能发送和接收queue消息，如果要发送和接收topic消息，需要加入:
+  # 但测试过程中发现问题：结果是彻底的反了过来，topic生效了，queue却没起作用了。不明白...，暂时注释掉，采用手动配置方式
+#  jms:
+#    pub-sub-domain: true

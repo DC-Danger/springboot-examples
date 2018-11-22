@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hz.learnboot</groupId>
+    <artifactId>springboot-data</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>springboot-data</name>
+    <description>Spring Boot 数据库操作</description>
+
+    <url>https://gitee.com/hezhao/springboot-examples/tree/master/springboot-data</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Horace</name>
+            <email>hezhao_java@163.com</email>
+            <url>https://gitee.com/hezhao</url>
+        </developer>
+    </developers>
+
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- 模块列表 -->
+    <modules>
+        <!-- Spring Boot JPA -->
+        <module>springboot-jpa</module>
+        <!-- Spring Boot JPA(多数据源) -->
+        <module>springboot-jpa-mutil</module>
+		
+        <!-- Spring Boot Mybatis 注解 -->
+        <module>springboot-mybatis-annotation</module>
+        <!-- Spring Boot Mybatis 注解(多数据源) -->
+        <module>springboot-mybatis-mutil-annotation</module>
+        <!-- Spring Boot Mybatis XML -->
+        <module>springboot-mybatis-xml</module>
+        <!-- Spring Boot Mybatis XML(多数据源) -->
+        <module>springboot-mybatis-mutil-xml</module>
+
+        <!-- Spring Boot 使用 TkMybatis 框架 简化Mybatis开发 -->
+        <module>springboot-tkmybatis</module>
+		
+        <!-- Spring Boot JDBC -->
+        <module>springboot-jdbc</module>
+        <!-- Spring Boot JDBC(多数据源) -->
+        <module>springboot-jdbc-mutil</module>
+		
+        <!-- Spring Boot MongoDB -->
+        <module>springboot-mongodb</module>
+        <!-- Spring Boot MongoDB(多数据源) -->
+        <module>springboot-mongodb-mutil</module>
+    </modules>
+
+</project>

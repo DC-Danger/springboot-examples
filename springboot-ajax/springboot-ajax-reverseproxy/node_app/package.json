@@ -1,0 +1,35 @@
+{
+  "name": "node_app",
+  "private": true,
+  "description": "Spring 结合 Node.js 完成 AJAX 跨域 Demo 之 反向代理",
+  "version": "0.0.1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": {
+    "name": "Horace",
+    "email": "hezhao_java@163.com"
+  },
+  "keywords": [
+    "node.js",
+    "javascript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/hezhao/springboot-examples"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "8.11.x"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "express-http-proxy": "^1.2.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0"
+  }
+}

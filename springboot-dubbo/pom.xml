@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hz.learnboot</groupId>
+    <artifactId>springboot-dubbo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>springboot-dubbo</name>
+    <description>Spring Boot 集成 Dubbo</description>
+
+    <url>https://gitee.com/hezhao/springboot-examples/tree/master/springboot-dubbo</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Horace</name>
+            <email>hezhao_java@163.com</email>
+            <url>https://gitee.com/hezhao</url>
+        </developer>
+    </developers>
+
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- 模块列表 -->
+    <modules>
+        <!-- Spring Boot Dubbo示例1 使用XML配置文件方式集成 -->
+        <module>springboot-dubbo-1-xml</module>
+		<!-- Spring Boot Dubbo示例2 使用官方最新dubbo-spring-boot-starter -->
+        <module>springboot-dubbo-2-starter</module>
+		<!-- Spring Boot Dubbo示例3 使用teaey-io.dubbo.springboot集成 -->
+        <module>springboot-dubbo-3-teaey</module>
+    </modules>
+
+</project>

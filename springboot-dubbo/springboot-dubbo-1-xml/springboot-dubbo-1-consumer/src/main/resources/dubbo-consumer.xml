@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo  http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="dubbo-1-consumer" logger="slf4j"/>
+
+    <!-- 注册中心支持zookeeper、redis、Muticast、Simple注册中心 -->
+    <!-- 推荐使用zookeeper作为注册中心 多个address间用,分隔 -->
+    <dubbo:registry id="demo" address="${dubbo.registry.address}" default="true" protocol="zookeeper" client="zkclient"/>
+
+    <!-- 协议类型和暴露服务的端口, 这里用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" threadpool="fixed" threads="${dubbo.protocol.pool.size}"/>
+
+    <!-- 可设置一些默认参数, 例如启动检查、超时时间 -->
+    <dubbo:consumer check="false" timeout="5000" retries="0" loadbalance="leastactive"/>
+
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <dubbo:reference id="demoService" interface="com.hz.learnboot.dubbo.service.DemoService" check="false" registry="demo" timeout="2000" />
+
+    <!-- dubbo可通过指定Url方式绕过注册中心直连指定的服务地址，仅适合用在开发测试环境 -->
+    <!--<dubbo:reference id="demoService" interface="com.hz.learnboot.dubbo.service.DemoService" check="false" registry="demo" timeout="2000"  url="dubbo://127.0.0.1:20880" />-->
+
+</beans>

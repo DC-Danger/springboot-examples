@@ -1,0 +1,5 @@
+# 指定使用的cacheManger是jcache
+spring:
+  cache:
+    jcache:
+      config: classpath:ehcache.xml

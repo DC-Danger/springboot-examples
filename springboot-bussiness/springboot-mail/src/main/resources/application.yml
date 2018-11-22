@@ -1,0 +1,21 @@
+spring:
+  mail:
+    host: smtp.qq.com # 指定SMTP server host
+    protocol: smtp # 指定SMTP server使用的协议，默认为: smtp
+    port: 25
+    username: xxx@foxmail.com # 指定SMTP server的用户名
+    password: your password # 指定SMTP server登陆密码.或者授权码
+    nickname: your name # 发送人姓名
+    default-encoding: UTF-8 # 指定默认MimeMessage的编码，默认为: UTF-8
+    test-connection: false # 指定是否在启动时测试邮件服务器连接，默认为false
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true  # 开启安全协议
+      mail.smtp.starttls.required: true
+      mail.smtp.host: smtp.qq.com
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.port: 465
+      mail.smtp.socketFactory.fallback: false
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 3000
+      mail.smtp.writetimeout: 5000

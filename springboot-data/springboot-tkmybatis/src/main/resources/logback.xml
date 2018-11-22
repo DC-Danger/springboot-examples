@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!--显示日志-->
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.springframework.boot" level="INFO" />
+    <logger name="org.springframework.data" level="DEBUG" />
+    <logger name="org.springframework.dao" level="INFO" />
+    <logger name="java.sql.Connection" level="DEBUG" />
+    <logger name="java.sql.Statement" level="DEBUG" />
+    <logger name="java.sql.PreparedStatement" level="DEBUG" />
+    <logger name="com.mysql.jdbc" level="DEBUG" />
+    <logger name="org.apache.ibatis" level="DEBUG" />
+    <logger name="com.hz.learnboot.tkmybatis" level="INFO" />
+
+</configuration>

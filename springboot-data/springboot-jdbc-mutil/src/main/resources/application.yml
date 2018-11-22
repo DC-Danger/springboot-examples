@@ -1,0 +1,22 @@
+spring:
+  # 数据源配置
+  datasource:
+    # 主数据源配置
+    primary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/test_hz?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+
+    # 从数据源配置
+    secondary:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/test_hz_city?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+
+  jpa:
+    show-sql: true
+
+# 开启DEBUG模式
+debug: true

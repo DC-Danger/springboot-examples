@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hz.learnboot.mybatis.dao.master.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.hz.learnboot.mybatis.domain.master.UserInfo">
+        <result column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <parameterMap id="User" type="com.hz.learnboot.mybatis.domain.master.UserInfo"/>
+
+    <sql id="Base_Column_List">
+		id, name, user_name, password
+	</sql>
+
+    <select id="findByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from user_info
+        where user_name = #{userName}
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user_info
+    </select>
+
+</mapper>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script src="../../js/jquery-3.1.0.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../css/default.css" rel="stylesheet"/>
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>书籍列表</title>
+
+    <script type="text/javascript">
+        var bookList = [];
+
+        //回调函数
+        function getBookList(result){
+            if(result.RESCODE == "000000") {
+                bookList = result.RESMSG;
+                // 这里为什么要先把bookList保存起来，然后在jQuery中解析？
+                // 因为代码执行到这里的时候，HTML还没渲染出来，自然也就操作不了DOM
+
+            } else {
+                alert(result.RESMSG);
+            }
+        }
+
+        $(function () {
+            var html = '';
+            for (var i = 0; i < bookList.length; i++){
+                html += '<tr>';
+                html += '<th scope="row">' + bookList[i].id + '</th>';
+                html += '<td>' + bookList[i].name + '</td>';
+                html += '<td>' + bookList[i].author + '</td>';
+                html += '<td>' + bookList[i].introduction + '</td>';
+                html += '</tr>';
+            }
+
+            $("#tbody").html(html);
+        });
+    </script>
+    <script type="text/javascript" src="http://127.0.0.1:8082/api/book?callback=getBookList"></script>
+</head>
+
+<body>
+
+<div class="contentDiv">
+
+    <div id="app-list">
+        <h5>Spring Boot 2.x 使用 Script标签 获取 JSONP 示例</h5>
+
+        <table class="table table-hover table-condensed">
+            <legend>
+                <strong>书籍列表</strong>
+            </legend>
+            <thead>
+            <tr>
+                <th>书籍编号</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>简介</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

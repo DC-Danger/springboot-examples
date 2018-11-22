@@ -1,0 +1,21 @@
+server:
+  port: 8769
+
+spring:
+  application:
+    name: service-zuul
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ # 注册中心访问地址
+
+zuul:
+  # 路由配置
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: consumer-ribbon-hystrix
+    api-b:
+      path: /api-b/**
+      serviceId: consumer-feign-hystrix

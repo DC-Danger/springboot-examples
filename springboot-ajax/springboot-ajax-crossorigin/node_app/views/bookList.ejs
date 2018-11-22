@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script src="/javascripts/jquery-3.1.0.min.js"></script>
+    <script src="/javascripts/vue-2.5.16.min.js"></script>
+    <script src="/javascripts/vue-resource-1.5.1.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/stylesheets/default.css" rel="stylesheet"/>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>书籍列表</title>
+
+    <script>
+        var rootApi = "http://127.0.0.1:8082";
+
+        function showError (resp) {
+            console.log(resp);
+        }
+
+        $(function () {
+            var appList = new Vue({
+                el: '#app-list',
+                data: {
+                    title: 'Spring Boot 2.x CrossOrigin',
+                    bookList: []
+                },
+                created: function () { // 初始化时调用
+                    this.init();
+                },
+                methods: {
+                    init: function () { // 获取列表
+                        var that = this;
+                        that.$resource(rootApi + '/api/book').get().then(function (resp) {
+                            resp.json().then(function (result) {
+                                if (result.RESCODE == "000000") {
+                                    that.bookList = result.RESMSG;
+                                } else {
+                                    console.log(result.RESMSG);
+                                }
+                            });
+                        }, showError);
+                    },
+                    remove: function (id) {
+                        var that = this;
+                        that.$resource(rootApi + '/api/book/delete/' + id).get().then(function (resp) {
+                            resp.json().then(function (result) {
+                                if (result.RESCODE == "000000") {
+                                    location = '/';
+                                } else {
+                                    console.log(result.RESMSG);
+                                }
+                            });
+                        }, showError);
+                    }
+                }
+            });
+            window.appList = appList;
+        });
+
+    </script>
+</head>
+
+<body>
+
+<div class="contentDiv">
+
+    <div id="app-list">
+        <h5>{{ title }}</h5>
+
+        <table class="table table-hover table-condensed">
+            <legend>
+                <strong>书籍列表</strong>
+            </legend>
+            <thead>
+            <tr>
+                <th>书籍编号</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>简介</th>
+                <th>管理</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="book in bookList">
+                <th scope="row">{{ book.id }}</th>
+                <td><a :href="'/info?bookId=' + book.id ">{{ book.name }}</a></td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.introduction }}</td>
+                <td><a class="btn btn-danger" href="#0" v-on:click="remove(book.id)">删除</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div><a class="btn btn-primary" href="/info" role="button">新增书籍</a></div>
+    </div>
+</div>
+
+</body>
+</html>

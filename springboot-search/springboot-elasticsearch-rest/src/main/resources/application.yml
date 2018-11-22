@@ -1,0 +1,4 @@
+# elasticsearch配置信息
+elasticsearch:
+  host: 127.0.0.1
+  port: 9200 # 这里用的是HTTP REST API 端口

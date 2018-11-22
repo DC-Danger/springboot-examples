@@ -1,0 +1,9 @@
+# elasticsearch配置信息
+# 9200端口是用来让HTTP REST API来访问ElasticSearch，而9300端口是传输层监听的默认端口
+elasticsearch:
+  host: 127.0.0.1
+  port: 9300
+  pool:
+    size: 10
+  cluster:
+    name: my-application

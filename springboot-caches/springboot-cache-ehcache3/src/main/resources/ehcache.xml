@@ -1,0 +1,54 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.ehcache.org/v3"
+        xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
+        xsi:schemaLocation="http://www.ehcache.org/v3
+	                        http://www.ehcache.org/schema/ehcache-core-3.2.xsd
+	                        http://www.ehcache.org/v3/jsr107
+	                        http://www.ehcache.org/schema/ehcache-107-ext-3.2.xsd">
+
+    <!-- 缓存路径-->
+    <persistence directory="java.io.tmpdir"/>
+
+    <!-- 缓存策略1 -->
+    <cache-template name="default">
+        <resources>
+            <heap unit="entries">2000</heap>
+            <offheap unit="MB">100</offheap>
+        </resources>
+    </cache-template>
+
+    <cache alias="ehcache1" uses-template="default">
+        <expiry>
+            <ttl unit="seconds">600</ttl>
+        </expiry>
+    </cache>
+
+
+    <!-- 缓存策略2 -->
+    <cache-template name="heap-cache">
+        <!-- 监听 -->
+        <listeners>
+            <listener>
+                <class>com.hz.learnboot.cache.listener.EventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>UPDATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+                <events-to-fire-on>REMOVED</events-to-fire-on>
+                <events-to-fire-on>EVICTED</events-to-fire-on>
+            </listener>
+        </listeners>
+        <resources>
+            <heap unit="entries">2000</heap>
+            <offheap unit="MB">100</offheap> <!-- unit of measure is case sensitive! -->
+        </resources>
+    </cache-template>
+
+    <cache alias="peopleCache" uses-template="heap-cache">
+        <expiry>
+            <ttl unit="seconds">600</ttl>
+        </expiry>
+    </cache>
+
+</config>

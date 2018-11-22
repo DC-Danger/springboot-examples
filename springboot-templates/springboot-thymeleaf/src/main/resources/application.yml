@@ -1,0 +1,16 @@
+server:
+  # 设置端口号
+  port: 8082
+  # 编码格式
+  tomcat.uri-encoding: UTF-8
+
+#spring:
+#  # 使用thymeleaf模板引擎
+#  thymeleaf:
+#    enabled: true # 默认启用
+#    cache: false # 禁用缓存，否则热部署不生效
+#    prefix: classpath:templates/
+#    surfix: .html
+#    context-type: text/html
+#    mode: HTML5
+#    encoding: UTF-8

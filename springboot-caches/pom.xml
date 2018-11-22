@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hz.learnboot</groupId>
+    <artifactId>springboot-caches</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>springboot-caches</name>
+    <description>Spring Boot 缓存</description>
+
+    <url>https://gitee.com/hezhao/springboot-examples/tree/master/springboot-caches</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Horace</name>
+            <email>hezhao_java@163.com</email>
+            <url>https://gitee.com/hezhao</url>
+        </developer>
+    </developers>
+
+    <!-- 许可证 -->
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://mit-license.org/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- 模块列表 -->
+    <modules>
+        <!-- Spring Boot Redis -->
+        <module>springboot-redis</module>
+        <!-- Spring Boot Redis Config (自定义Redis配置信息) -->
+        <module>springboot-redis-config</module>
+        <!-- Spring Boot Redis :: 整合 Mybatis 并使用 Redis 作为缓存 -->
+        <module>springboot-redis-mybatis</module>
+		
+        <!-- Spring Boot Cache 整合 Redis， 使用@Cacheable等注解 -->
+        <module>springboot-cache-redis</module>
+        <!-- Spring Boot Cache 缓存 -->
+        <module>springboot-cache</module>
+        <!-- Spring Boot Cache 集成 Ehcache -->
+        <module>springboot-cache-ehcache</module>
+		
+        <!-- Spring Boot 集成 Ehcache3 -->
+        <module>springboot-cache-ehcache3</module>
+        <!-- Spring Boot 集成 Memcached -->
+        <module>springboot-memcached</module>
+		
+		<!-- Spring Boot 使用Redis实现共享Session -->
+        <module>springboot-session-redis</module>
+    </modules>
+
+</project>

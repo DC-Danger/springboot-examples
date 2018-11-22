@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181 # dubbo注册地址
+  protocol:
+    port: 20880 # 端口
+    pool:
+      size: 200 # 线程池大小
+
+logging:
+  level:
+    root: INFO

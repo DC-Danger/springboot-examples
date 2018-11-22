@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    # 如果没有配置数据库信息，将会使用H2内存数据库模式
+    driver-class-name: org.h2.Driver
+    # url: jdbc:h2:~/test # 连接位于用户目录下的test数据库
+    # url: jdbc:h2:D:/h2/db/test # 嵌入式(本地)连接,同一时间段内只允许有一个客户端连接到此H2数据库
+    # url: jdbc:h2:tcp://127.0.0.1/~/test # TCP/IP的服务器模式(远程连接)
+    url: jdbc:h2:mem:test # 内存模式
+    username: sa
+    password: ok
+
+    # 初始化数据库结构
+    schema: classpath:db/schema.sql
+    # 初始化数据库数据
+    data: classpath:db/data.sql
+
+  # h2 web consloe配置
+  # h2 web consloe是一个数据库GUI管理应用，就和phpMyAdmin类似。程序运行时，会自动启动h2 web consloe。
+  h2:
+    console:
+      # 是否启用
+      enabled: true
+      # h2 console 访问URl
+      path: /h2-console
+      settings:
+        # 是否可以远程访问
+        web-allow-others: false
+
+  jpa:
+    # 展示SQL语句
+    show-sql: true

@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+logging:
+  level:
+    root: INFO
+    com.alibaba.dubbo: INFO
+
+# dubbo配置
+spring:
+  dubbo:
+    application:
+      name: dubbo-3-consumer
+    registry:
+      address: zookeeper://127.0.0.1:2181 # dubbo注册地址
+    scan: com.hz.learnboot.dubbo # 要扫描的package目录
+    module:
+      default: false
+    monitor:
+      protocol: registry # monitor监控中心

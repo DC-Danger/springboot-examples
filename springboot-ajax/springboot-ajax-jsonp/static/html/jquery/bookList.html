@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script src="../../js/jquery-3.1.0.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../css/default.css" rel="stylesheet"/>
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>书籍列表</title>
+
+    <script>
+        var rootApi = "http://127.0.0.1:8082";
+
+        // 1.使用ajax()获取
+        /*
+        1.jsonp只能使用get请求，解决同源问题，返回javascript代码，因为请求javascript文件是没有同源问题的。
+        2.当请求数据类型为jsonp时，会将callback=jsonpCallback加在url上，http://localhost:8090/api/testcallback=jsonpCallback
+        3.前台javascript中定义jsonpCallback函数，此函数必须定义在window下，也就是全局的函数，否则找不到。
+        4.后台获取请求的callback参数值jsonpCallback，返回字符串"jsonpCallback(result)"，result为返回结果。
+        5.请求返回的是script tag，首先会调用jsonpCallback函数，不管是否找到该函数，都会调用success函数。
+        6.如果没有定义jsonp和jsonpCallback，jsonp默认为"callback",jsonpCallback会是Jquery自动生成的函数名。*/
+        $(function(){
+
+            $.ajax({
+                type: "get",
+                async: false,
+                url: rootApi + "/api/book",
+                dataType: "jsonp",
+                jsonp: "callback", // 传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名，默认为callback
+                jsonpCallback:"jsonCallback", // 自定义的jsonp回调函数名称，可选，默认为jQuery自动生成的随机函数名
+                success: function(result, status, jqXHR){
+                    if(result.RESCODE == "000000") {
+                        var bookList = result.RESMSG;
+
+                        var html = '';
+                        for (var i = 0; i < bookList.length; i++){
+                            html += '<tr>';
+                            html += '<th scope="row">' + bookList[i].id + '</th>';
+                            html += '<td>' + bookList[i].name + '</td>';
+                            html += '<td>' + bookList[i].author + '</td>';
+                            html += '<td>' + bookList[i].introduction + '</td>';
+                            html += '</tr>';
+                        }
+
+                        $("#tbody").html(html);
+                    } else {
+                        alert(result.RESMSG);
+                    }
+                },
+                error: function(XMLHttpRequest, status, errorThrown){
+                    alert('调用出错');
+                }
+            });
+
+
+           // 2.使用getJSON()获取
+           // $.getJSON(rootApi + "/api/book?callback=?", { key:new Date()}, function(result){
+           //     if(result.RESCODE == "000000") {
+           //         var bookList = result.RESMSG;
+           //
+           //         var html = '';
+           //         for (var i = 0; i < bookList.length; i++){
+           //             html += '<tr>';
+           //             html += '<th scope="row">' + bookList[i].id + '</th>';
+           //             html += '<td>' + bookList[i].name + '</td>';
+           //             html += '<td>' + bookList[i].author + '</td>';
+           //             html += '<td>' + bookList[i].introduction + '</td>';
+           //             html += '</tr>';
+           //         }
+           //
+           //         $("#tbody").html(html);
+           //     } else {
+           //         alert(result.RESMSG);
+           //     }
+           // });
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+<div class="contentDiv">
+
+    <div id="app-list">
+        <h5>Spring Boot 2.x 使用 jQuery JSONP 示例</h5>
+
+        <table class="table table-hover table-condensed">
+            <legend>
+                <strong>书籍列表</strong>
+            </legend>
+            <thead>
+            <tr>
+                <th>书籍编号</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>简介</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
